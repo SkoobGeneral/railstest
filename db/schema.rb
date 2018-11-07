@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_181946) do
 
   create_table "records", force: :cascade do |t|
     t.string "title"
+    t.string "artist"
     t.integer "year"
     t.string "description"
     t.datetime "created_at", null: false
