@@ -4,7 +4,13 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = Record.where(nil)
+    @records = Record.filter(params.slice(:title, :artist, :year))
+    if @records.length == 0 then
+      flash[:notice] = "No se han encontrado registros."
+      @records = Record.all 
+    else flash[:notice] = ""
+    end
   end
 
   # GET /records/1
