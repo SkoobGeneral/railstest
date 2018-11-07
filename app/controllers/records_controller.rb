@@ -13,6 +13,16 @@ class RecordsController < ApplicationController
     end
   end
 
+  # GET /records/even
+  def even
+    @records = Record.all
+    if @records.length == 0 then
+      flash[:notice] = "No se han encontrado registros."
+      @records = Record.all 
+    else flash[:notice] = ""
+    end
+  end
+
   # GET /records/1
   # GET /records/1.json
   def show
@@ -26,6 +36,7 @@ class RecordsController < ApplicationController
   # GET /records/1/edit
   def edit
   end
+
 
   # POST /records
   # POST /records.json
